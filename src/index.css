@@ -149,7 +149,7 @@ body {
   transition: opacity 1s ease-in-out; 
 }
 .mainBg {
-  background-image: url("./assets/mainBg.png");
+  background-image: url("./assets/solargate_purple.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;

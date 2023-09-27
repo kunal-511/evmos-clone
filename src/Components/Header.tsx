@@ -23,6 +23,8 @@ const Header: React.FC = () => {
     setShowTechMenu(false);
   };
 
+ 
+
   useEffect(() => {
     const interval = setInterval(() => {
       const nextIndex = (textIndex + 1) % texts.length;
@@ -117,31 +119,33 @@ const Header: React.FC = () => {
     );
   } else {
     return (
-      <div className="mainBg  h-[70vh] bg-center">
+      <div className="mainBg nav-box  h-[29rem] bg-center">
         <div className="  ">
-          <nav className="flex justify-between items-center p-6 text-custom2 font-semibold  fixed top-0 left-0 right-0 ">
+          <nav
+            className="flex justify-between items-center p-6 text-custom2 font-semibold fixed top-0 left-0 right-0 "
+          >
             <ul className="flex justify-center items-center space-x-2">
               <li>
-                <img src={logo} className="w-[2.5rem]" alt="" />
+                <img src={logo} className="w-[2.5rem]" alt="logo" />
               </li>
               <li className="text-2xl">Evmos</li>
             </ul>
             <ul className="flex space-x-8 justify-center items-center text-custom2 font-semibold">
               <li
                 onMouseEnter={handleMouseEnter}
-                className=" flex justify-center items-center "
+                className=" flex justify-center items-center  "
               >
                 Technology <BiDownArrowAlt className="pt-[4px] text-2xl" />
               </li>
               <li
                 onMouseEnter={handleMouseEnter}
-                className=" flex justify-center items-center"
+                className="flex  justify-center items-center "
               >
                 Community <BiDownArrowAlt className="pt-[4px] text-2xl" />
               </li>
               <li
                 onMouseEnter={handleMouseEnter}
-                className=" flex justify-center items-center"
+                className="flex justify-center items-center "
               >
                 About <BiDownArrowAlt className="pt-[4px] text-2xl" />
               </li>
@@ -161,7 +165,7 @@ const Header: React.FC = () => {
           </nav>
 
           <div className="relative px-6">
-            <div className="uppercase text-xs text-white absolute top-28 right-80">
+            <div className="uppercase text-[0.7rem] text-white absolute top-28 right-80">
               <p>Go everywhere</p>
               <p>reach everywhere</p>
             </div>
@@ -171,23 +175,23 @@ const Header: React.FC = () => {
               </p>
             </div>
 
-            <div className="uppercase text-xs text-white absolute top-80 left-12">
+            <div className="uppercase text-[0.7rem]  text-white absolute top-80 left-12">
               <p>Go everywhere</p>
               <p>reach everywhere</p>
             </div>
-            <div className="uppercase text-xs text-white absolute top-96 left-[36rem]">
+            <div className="uppercase text-[0.7rem] text-white absolute top-96 left-[30rem]">
               <p>Go everywhere</p>
               <p>reach everywhere</p>
             </div>
-            <div className="top-80 text-white flex flex-col   right-32 absolute">
+            <div className="top-80 text-white flex flex-col   right-36 absolute">
               <p className="w-[18rem]  font-medium">
                 Evmos is the operating system for applications of the future.
               </p>
               <div className="flex mt-4 space-x-4">
-                <button className="bg-white text-black p-3 rounded-lg">
-                  Start Building
-                </button>
-                <button className="font-bold border-[1px] border-white p-3 rounded-lg   ">
+                <button className="bg-custom3 font-medium text-black p-1 h-[2.5rem] w-[10rem] rounded-lg">
+                  Start Building 
+                </button> 
+                <button className="font-bold border-[1px] border-custom3 p-1 h-[2.5rem] w-[10rem] rounded-lg   ">
                   Read Manifesto
                 </button>
               </div>
