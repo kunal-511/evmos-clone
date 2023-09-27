@@ -1,0 +1,202 @@
+import React, { useState, useEffect } from "react";
+import logo from "../assets/evmos-logo.svg";
+import { BiDownArrowAlt } from "react-icons/bi";
+import { GiHamburgerMenu } from "react-icons/gi";
+import blackhole from "../assets/blackhole0.png";
+
+const Header: React.FC = () => {
+  const [showMenu, setShowMenu] = useState(false);
+  const [showTechMenu, setShowTechMenu] = useState(false);
+  const [textIndex, setTextIndex] = useState(0);
+  const texts = ["deploy once-", "access all ecosystems"];
+  const [showText, setShowText] = useState(true);
+
+  const toggleMenu = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const handleMouseEnter = () => {
+    setShowTechMenu(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowTechMenu(false);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const nextIndex = (textIndex + 1) % texts.length;
+      setShowText(false);
+
+      setTimeout(() => {
+        setTextIndex(nextIndex);
+        setShowText(true);
+      }, 300);
+    }, 5000);
+
+    return () => {
+      clearInterval(interval);
+    };
+  }, [textIndex]);
+
+  const HamburgerContent: React.FC = () => {
+    return (
+      <div className="px-6 pt-3">
+        <nav className="flex justify-between items-center bg-custom2    text-black font-semibold   ">
+          <ul className="flex justify-center items-center space-x-2">
+            <li>
+              <img src={logo} className="w-[2.5rem]" alt="" />
+            </li>
+            <li className="text-2xl">Evmos</li>
+          </ul>
+          <ul className="flex space-x-8 justify-center items-center font-semibold">
+            <li
+              onMouseLeave={handleMouseLeave}
+              className=" flex justify-center items-center "
+            >
+              Technology <BiDownArrowAlt className="pt-[4px] text-2xl" />{" "}
+            </li>
+            <li
+              onMouseLeave={handleMouseLeave}
+              className=" flex justify-center items-center"
+            >
+              Community <BiDownArrowAlt className="pt-[4px] text-2xl" />
+            </li>
+            <li
+              onMouseLeave={handleMouseLeave}
+              className=" flex justify-center items-center"
+            >
+              About <BiDownArrowAlt className="pt-[4px] text-2xl" />
+            </li>
+
+            <li className="">
+              <button className="p-2 text-black bg-orange-600 rounded-lg w-[8rem]">
+                Launch App
+              </button>
+            </li>
+          </ul>
+        </nav>
+        <div className="flex justify-between mt-16">
+          <div>
+            <div>
+              <p className="font-semibold text-5xl mb-4">Build With Evmos</p>
+              <p className="w-[20rem] text-custom3 ">
+                Designed with developers in mind, welcome to a universe where
+                IBC can be leveraged directly from the smart contract level.
+              </p>
+            </div>
+            <div className="mt-12 flex space-x-8 text-custom3">
+              <ul>
+                <li>Carrers</li>
+                <li>Press</li>
+              </ul>
+              <ul>
+                <li>Enquires</li>
+                <li>Manifesto</li>
+              </ul>
+            </div>
+          </div>
+          <div className="overflow-hidden ">
+            <img src={blackhole} className="w-[30rem]" alt="" />
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  if (showMenu || showTechMenu) {
+    return (
+      <>
+        <div
+          onMouseLeave={toggleMenu}
+          className="h-[83vh] bg-custom2 overflow-hidden z-[100]  "
+        >
+          <HamburgerContent />
+        </div>
+      </>
+    );
+  } else {
+    return (
+      <div className="mainBg  h-[70vh] bg-center">
+        <div className="  ">
+          <nav className="flex justify-between items-center p-6 text-custom2 font-semibold  fixed top-0 left-0 right-0 ">
+            <ul className="flex justify-center items-center space-x-2">
+              <li>
+                <img src={logo} className="w-[2.5rem]" alt="" />
+              </li>
+              <li className="text-2xl">Evmos</li>
+            </ul>
+            <ul className="flex space-x-8 justify-center items-center text-custom2 font-semibold">
+              <li
+                onMouseEnter={handleMouseEnter}
+                className=" flex justify-center items-center "
+              >
+                Technology <BiDownArrowAlt className="pt-[4px] text-2xl" />
+              </li>
+              <li
+                onMouseEnter={handleMouseEnter}
+                className=" flex justify-center items-center"
+              >
+                Community <BiDownArrowAlt className="pt-[4px] text-2xl" />
+              </li>
+              <li
+                onMouseEnter={handleMouseEnter}
+                className=" flex justify-center items-center"
+              >
+                About <BiDownArrowAlt className="pt-[4px] text-2xl" />
+              </li>
+              <li
+                onClick={toggleMenu}
+                className="bg-orange-600 p-[0.35rem] w-[3rem] flex justify-center items-center rounded-lg"
+              >
+                {" "}
+                <GiHamburgerMenu className="text-black text-3xl" />{" "}
+              </li>
+              <li className="">
+                <button className="p-2 text-black bg-orange-600 rounded-lg w-[8rem]">
+                  Launch App
+                </button>
+              </li>
+            </ul>
+          </nav>
+
+          <div className="relative px-6">
+            <div className="uppercase text-xs text-white absolute top-28 right-80">
+              <p>Go everywhere</p>
+              <p>reach everywhere</p>
+            </div>
+            <div className="absolute top-40 evmos text-7xl w-[30rem] uppercase text-white font-extrabold">
+              <p className={showText ? "fade-in" : "fade-out"}>
+                {texts[textIndex]}
+              </p>
+            </div>
+
+            <div className="uppercase text-xs text-white absolute top-80 left-12">
+              <p>Go everywhere</p>
+              <p>reach everywhere</p>
+            </div>
+            <div className="uppercase text-xs text-white absolute top-96 left-[36rem]">
+              <p>Go everywhere</p>
+              <p>reach everywhere</p>
+            </div>
+            <div className="top-80 text-white flex flex-col   right-32 absolute">
+              <p className="w-[18rem]  font-medium">
+                Evmos is the operating system for applications of the future.
+              </p>
+              <div className="flex mt-4 space-x-4">
+                <button className="bg-white text-black p-3 rounded-lg">
+                  Start Building
+                </button>
+                <button className="font-bold border-[1px] border-white p-3 rounded-lg   ">
+                  Read Manifesto
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+};
+
+export default Header;
