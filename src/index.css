@@ -180,6 +180,13 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+.background5 {
+  background-image: url("./assets/rotate.png");
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  
+}
 
 @keyframes slideDown {
   from {

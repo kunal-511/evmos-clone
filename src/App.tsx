@@ -7,6 +7,7 @@ import Mission from "./Components/Mission";
 import Footer from "./Components/Footer";
 import News from "./Components/News";
 import Container from "./Components/Container";
+import BlockchainUniverse from "./Components/BlockchainUniverse";
 
 function App() {
   const [showLoader, setShowLoader] = useState(true);
@@ -27,8 +28,9 @@ function App() {
       <>
         <Header />
         <Stats />
-
+        
         <Box />
+        <BlockchainUniverse />
         <Container />
         <Mission />
         <News />
