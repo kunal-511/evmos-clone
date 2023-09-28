@@ -71,15 +71,15 @@ const Header: React.FC = () => {
             <li className="text-2xl">Evmos</li>
           </ul>
           <ul className="flex space-x-8 justify-center items-center font-semibold">
-          {!isSticky && (
+      
             <li
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
-              className="flex justify-center items-center remove"
+              className={`flex justify-center items-center ${isSticky ? 'hidden' : ''}`}
             >
               Technology <BiDownArrowAlt className="pt-[4px] text-2xl" />
             </li>
-          )}
+         
             <li
               onMouseLeave={handleMouseLeave}
               className=" flex justify-center items-center"
