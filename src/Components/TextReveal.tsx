@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { gsap } from "gsap";
 import SplitType from "split-type";
+import { ScrollTrigger } from "gsap/all";
 
 interface BoxProps {
   customText: string;
 }
+gsap.registerPlugin(ScrollTrigger);
 const TextReveal: React.FC<BoxProps> = ({ customText }) => {
   useEffect(() => {
     const SplitTypes = Array.from(
