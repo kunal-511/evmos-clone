@@ -210,3 +210,6 @@ body {
   transform-origin: top;
   transform: translateY(0);
 }
+.hidden{
+  display: none;
+}
