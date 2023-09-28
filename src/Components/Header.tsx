@@ -10,6 +10,7 @@ const Header: React.FC = () => {
   const [textIndex, setTextIndex] = useState(0);
   const texts = ["deploy once-", "access all ecosystems"];
   const [showText, setShowText] = useState(true);
+  const [isSticky, setIsSticky] = useState(false);
 
   const toggleMenu = () => {
     setShowMenu(!showMenu);
@@ -23,7 +24,21 @@ const Header: React.FC = () => {
     setShowTechMenu(false);
   };
 
+
+
+
+
+
   useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const stickyThreshold = 50;
+      setIsSticky(scrollPosition > stickyThreshold);
+      console.log('stcky')
+    };
+      
+
+    
     const interval = setInterval(() => {
       const nextIndex = (textIndex + 1) % texts.length;
       setShowText(false);
@@ -33,9 +48,11 @@ const Header: React.FC = () => {
         setShowText(true);
       }, 300);
     }, 5000);
+    window.addEventListener('scroll', handleScroll);
 
     return () => {
       clearInterval(interval);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, [textIndex]);
 
@@ -47,7 +64,7 @@ const Header: React.FC = () => {
         } px-6 pt-3 `}
       >
         <nav className="flex justify-between items-center bg-custom2    text-black font-semibold   ">
-          <ul className="flex justify-center items-center space-x-[8rem]">
+          <ul className="flex justify-center items-center space-x-2">
             <li>
               <img src={logo} className="w-[2.5rem]" alt="" />
             </li>
@@ -145,19 +162,19 @@ const Header: React.FC = () => {
             <ul className="flex space-x-8 justify-center items-center text-custom2 font-semibold">
               <li
                 onMouseEnter={handleMouseEnter}
-                className=" flex justify-center items-center  "
+                className=" flex justify-center items-center remove "
               >
                 Technology <BiDownArrowAlt className="pt-[4px] text-2xl" />
               </li>
               <li
                 onMouseEnter={handleMouseEnter}
-                className="flex  justify-center items-center "
+                className="flex  justify-center items-center remove "
               >
                 Community <BiDownArrowAlt className="pt-[4px] text-2xl" />
               </li>
               <li
                 onMouseEnter={handleMouseEnter}
-                className="flex justify-center items-center "
+                className="flex justify-center items-center remove "
               >
                 About <BiDownArrowAlt className="pt-[4px] text-2xl" />
               </li>
