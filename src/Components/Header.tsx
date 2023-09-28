@@ -3,7 +3,7 @@ import logo from "../assets/evmos-logo.svg";
 import { BiDownArrowAlt } from "react-icons/bi";
 import { GiHamburgerMenu } from "react-icons/gi";
 import blackhole from "../assets/blackhole0.png";
-
+import { BsArrowUpRight } from "react-icons/bs";
 const Header: React.FC = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [showTechMenu, setShowTechMenu] = useState(false);
@@ -23,8 +23,6 @@ const Header: React.FC = () => {
     setShowTechMenu(false);
   };
 
- 
-
   useEffect(() => {
     const interval = setInterval(() => {
       const nextIndex = (textIndex + 1) % texts.length;
@@ -43,9 +41,13 @@ const Header: React.FC = () => {
 
   const HamburgerContent: React.FC = () => {
     return (
-      <div className="px-6 pt-3">
+      <div
+        className={`relative ${
+          showMenu ? "slide-down" : "slide-up"
+        } px-6 pt-3 `}
+      >
         <nav className="flex justify-between items-center bg-custom2    text-black font-semibold   ">
-          <ul className="flex justify-center items-center space-x-2">
+          <ul className="flex justify-center items-center space-x-[8rem]">
             <li>
               <img src={logo} className="w-[2.5rem]" alt="" />
             </li>
@@ -81,20 +83,30 @@ const Header: React.FC = () => {
         <div className="flex justify-between mt-16">
           <div>
             <div>
-              <p className="font-semibold text-5xl mb-4">Build With Evmos</p>
-              <p className="w-[20rem] text-custom3 ">
+              <p className="font-semibold text-5xl mb-4 cursor-pointer">
+                Build With Evmos
+              </p>
+              <p className="w-[20rem] text-custom5 font-medium ">
                 Designed with developers in mind, welcome to a universe where
                 IBC can be leveraged directly from the smart contract level.
               </p>
             </div>
-            <div className="mt-12 flex space-x-8 text-custom3">
-              <ul>
-                <li>Carrers</li>
-                <li>Press</li>
+            <div className="mt-12 flex space-x-[6rem] text-custom5 font-medium">
+              <ul className="">
+                <li className="flex items-center hover:text-black cursor-pointer ">
+                  Careers <BsArrowUpRight className="w-[0.65rem] ml-1 " />{" "}
+                </li>
+                <li className="flex items-center hover:text-black cursor-pointer ">
+                  Press <BsArrowUpRight className="w-[0.65rem] ml-1 " />{" "}
+                </li>
               </ul>
-              <ul>
-                <li>Enquires</li>
-                <li>Manifesto</li>
+              <ul className="">
+                <li className="flex items-center hover:text-black cursor-pointer ">
+                  Enquires <BsArrowUpRight className="w-[0.65rem] ml-1 " />{" "}
+                </li>
+                <li className="flex items-center hover:text-black cursor-pointer ">
+                  Maifesto <BsArrowUpRight className="w-[0.65rem] ml-1 " />{" "}
+                </li>
               </ul>
             </div>
           </div>
@@ -111,7 +123,9 @@ const Header: React.FC = () => {
       <>
         <div
           onMouseLeave={toggleMenu}
-          className="h-[83vh] bg-custom2 overflow-hidden z-[100]  "
+          className={`relative ${
+            showMenu ? "slide-down" : "slide-up"
+          }  h-[83vh] bg-custom2 overflow-hidden z-[100]   `}
         >
           <HamburgerContent />
         </div>
@@ -121,9 +135,7 @@ const Header: React.FC = () => {
     return (
       <div className="mainBg nav-box  h-[29rem] bg-center">
         <div className="  ">
-          <nav
-            className="flex justify-between items-center p-6 text-custom2 font-semibold fixed top-0 left-0 right-0 "
-          >
+          <nav className="flex justify-between items-center p-6 text-custom2 font-semibold fixed top-0 left-0 right-0 ">
             <ul className="flex justify-center items-center space-x-2">
               <li>
                 <img src={logo} className="w-[2.5rem]" alt="logo" />
@@ -189,8 +201,8 @@ const Header: React.FC = () => {
               </p>
               <div className="flex mt-4 space-x-4">
                 <button className="bg-custom3 font-medium text-black p-1 h-[2.5rem] w-[10rem] rounded-lg">
-                  Start Building 
-                </button> 
+                  Start Building
+                </button>
                 <button className="font-bold border-[1px] border-custom3 p-1 h-[2.5rem] w-[10rem] rounded-lg   ">
                   Read Manifesto
                 </button>
